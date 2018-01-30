@@ -2,7 +2,7 @@ package home.local.dz4;
 
 import java.util.Iterator;
 
-public class TwoWayLinkedList<E> {
+public class TwoWayLinkedList<E>  {
 
     int size=0;
     Node first;
@@ -30,14 +30,26 @@ public class TwoWayLinkedList<E> {
         return null;
     }
 
+
+    public boolean remove(E o) {
+        return false;
+    }
+
+
+    public void clear() {
+
+    }
+
     public void addFirst(E e) {
-     Node newNode= new Node(e,first,null);
-     first=newNode;
+        Node newNode= new Node(e,first,null);
+        first=newNode;
+    size++;
     }
 
     public void addLast(E e) {
         Node newNode= new Node(e,null,last);
         last=newNode;
+        size++;
     }
 
     public void addt(E e) {
@@ -52,13 +64,29 @@ public class TwoWayLinkedList<E> {
         size++;
     }
 
+    E getFirst(){
+    if(isEmpty()) return null;
+     return (E) first.object;
+    }
 
-    public boolean remove(E o) {
-        return false;
+    E removeFirst(){
+    if(isEmpty()) return null;
+    Node temp =  first;
+    first=first.previous;
+    return (E) temp.object;
     }
 
 
-    public void clear() {
+    class LLIterator {
+
+        // reset() - to start
+        // hasNext()
+        // next() - to next elem
+        // getCurrent()
+        // atEnd() - is at the end
+        // insertAfter() - new node after current
+        // insertBefore()
+        // deleteCurrent()
 
     }
 }
