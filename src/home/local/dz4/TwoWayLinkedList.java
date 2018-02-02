@@ -1,7 +1,5 @@
 package home.local.dz4;
 
-import java.util.Iterator;
-
 public class TwoWayLinkedList<E>  {
 
     int size=0;
@@ -26,8 +24,8 @@ public class TwoWayLinkedList<E>  {
         return false;
     }
 
-    public Iterator<E> iterator() {
-        return null;
+    public LLIterator iterator() {
+        return new LLIterator(this);
     }
 
 
@@ -78,15 +76,53 @@ public class TwoWayLinkedList<E>  {
 
 
     class LLIterator {
-
+        private TwoWayLinkedList<E> collection;
+        Node current;
         // reset() - to start
-        // hasNext()
+
         // next() - to next elem
         // getCurrent()
         // atEnd() - is at the end
         // insertAfter() - new node after current
         // insertBefore()
         // deleteCurrent()
+
+
+        public LLIterator(TwoWayLinkedList<E> collection) {
+            this.collection = collection;
+        }
+
+        void reset(){
+            current=collection.first;
+        }
+
+        boolean hasNext(){
+            return  !(current.next==null);
+        }
+
+        Node next(){
+        return current.next; //да тут вернёт нуль, если элемента даже если элемента нет.
+        }
+
+        boolean atEnd(){
+        return (current.next==null) ? true : false;
+        }
+
+        void deleteCurrent(){
+         Node prev = current.previous;
+         Node next = current.next;
+         prev=next;
+        }
+
+         void insertAfter(E o) {//- new node after current
+             Node newNode = new Node(o,current.previous, current.next);
+
+         }
+
+        void insertBefore(E o){
+            Node newNode = new Node(o, current.next, current.previous);
+
+        }
 
     }
 }
