@@ -1,15 +1,15 @@
 package home.local.dz4;
 
-public class TwoWayLinkedList<E>  {
+public class TwoWayLinkedList<E> {
 
-    int size=0;
+    int size = 0;
     Node first;
     Node last;
 
-    public TwoWayLinkedList(){
-        this.size=0;
-        this.first=null;
-        this.last=null;
+    public TwoWayLinkedList() {
+        this.size = 0;
+        this.first = null;
+        this.last = null;
     }
 
     public int size() {
@@ -17,7 +17,7 @@ public class TwoWayLinkedList<E>  {
     }
 
     public boolean isEmpty() {
-        return size==0;
+        return size == 0;
     }
 
     public boolean contains(E o) {
@@ -39,39 +39,39 @@ public class TwoWayLinkedList<E>  {
     }
 
     public void addFirst(E e) {
-        Node newNode= new Node(e,first,null);
-        first=newNode;
-    size++;
+        Node newNode = new Node(e, first, null);
+        first = newNode;
+        size++;
     }
 
     public void addLast(E e) {
-        Node newNode= new Node(e,null,last);
-        last=newNode;
+        Node newNode = new Node(e, null, last);
+        last = newNode;
         size++;
     }
 
     public void addt(E e) {
-        if(size==0) {
-            Node newNode= new Node(e);
-            first=newNode;
-            last=newNode;
+        if (size == 0) {
+            Node newNode = new Node(e);
+            first = newNode;
+            last = newNode;
         } else {
-            Node newNode= new Node(e,first,null);
-            first=newNode;
+            Node newNode = new Node(e, first, null);
+            first = newNode;
         }
         size++;
     }
 
-    E getFirst(){
-    if(isEmpty()) return null;
-     return (E) first.object;
+    E getFirst() {
+        if (isEmpty()) return null;
+        return (E) first.object;
     }
 
-    E removeFirst(){
-    if(isEmpty()) return null;
-    Node temp =  first;
-    first=first.previous;
-    return (E) temp.object;
+    E removeFirst() {
+        if (isEmpty()) return null;
+        Node temp = first;
+        first = first.previous;
+        return (E) temp.object;
     }
 
 
@@ -92,34 +92,34 @@ public class TwoWayLinkedList<E>  {
             this.collection = collection;
         }
 
-        void reset(){
-            current=collection.first;
+        void reset() {
+            current = collection.first;
         }
 
-        boolean hasNext(){
-            return  !(current.next==null);
+        boolean hasNext() {
+            return !(current.next == null);
         }
 
-        Node next(){
-        return current.next; //да тут вернёт нуль, если элемента даже если элемента нет.
+        Node next() {
+            return current.next; //да тут вернёт нуль, если элемента даже если элемента нет.
         }
 
-        boolean atEnd(){
-        return (current.next==null) ? true : false;
+        boolean atEnd() {
+            return (current.next == null) ? true : false;
         }
 
-        void deleteCurrent(){
-         Node prev = current.previous;
-         Node next = current.next;
-         prev=next;
+        void deleteCurrent() {
+            Node prev = current.previous;
+            Node next = current.next;
+            prev = next;
         }
 
-         void insertAfter(E o) {//- new node after current
-             Node newNode = new Node(o,current.previous, current.next);
+        void insertAfter(E o) {//- new node after current
+            Node newNode = new Node(o, current.previous, current.next);
 
-         }
+        }
 
-        void insertBefore(E o){
+        void insertBefore(E o) {
             Node newNode = new Node(o, current.next, current.previous);
 
         }
